@@ -5,8 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaRestaurant.View"
         mc:Ignorable="d"
-        Title="AdminView" Height="450" Width="800">
+        Title="Order Window" Height="450" Width="800" FontSize="14" Background="DarkSlateGray" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Border Background="CadetBlue" CornerRadius="50" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="auto">
+                    <DataGrid Name="DataGridFoodOrder" ItemsSource="{Binding FoodOrders, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding FOrder, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
+                      AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black"
+                      FontWeight="Bold">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}"/>
+                            <DataGridTextColumn Header="Customer JMBG" Binding="{Binding FoodOrder.FoodCustomer.JMBG}"/>
+                            <DataGridTextColumn Header="Total Price" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Current Status" Binding="{Binding StatusOfOrder}"/>
+                            <DataGridTemplateColumn Header="Change Status">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Name="cboStatuses" Height="20" Width="150" Text="{Binding StatusOfOrder, UpdateSourceTrigger=PropertyChanged}" IsEditable="True"
+                                    SelectedItem="{Binding FOrder.StatusOfOrder, UpdateSourceTrigger=PropertyChanged}">
+                                            <ComboBoxItem>PROCESSING</ComboBoxItem>
+                                            <ComboBoxItem>READY</ComboBoxItem>
+                                            <ComboBoxItem>REJECTED</ComboBoxItem>
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Delete">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnDeleteFoodOrder"
+                                        Command="{Binding DataContext.DeleteFoodOrder, RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}},UpdateSourceTrigger=PropertyChanged}" Content="Delete"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Update">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnUpdateFoodOrder"
+                                        Command="{Binding DataContext.UpdateFoodOrder, RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}},UpdateSourceTrigger=PropertyChanged}"  Content="Update"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="btnLogOut" Content="Logout" Width="Auto" Height="20" HorizontalAlignment="Left" Margin="0,0,20,0"
+                Command="{Binding Logout, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaRestaurant.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace PizzaRestaurant.View
         public AdminView()
         {
             InitializeComponent();
+            DataContext = new AdminViewModel(this);
         }
     }
 }
