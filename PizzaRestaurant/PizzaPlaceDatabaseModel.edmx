@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FoodOrderAppBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FoodCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JMBG" Type="nvarchar" MaxLength="13" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodMenu">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="StatusOfOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__FoodOrder__Custo__18EBB532">
+          <End Role="FoodCustomer" Type="Self.FoodCustomer" Multiplicity="1" />
+          <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FoodOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodOrderAppBaseModelStoreContainer">
+          <EntitySet Name="FoodCustomer" EntityType="Self.FoodCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodMenu" EntityType="Self.FoodMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodOrder" EntityType="Self.FoodOrder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FoodOrder__Custo__18EBB532" Association="Self.FK__FoodOrder__Custo__18EBB532">
+            <End Role="FoodCustomer" EntitySet="FoodCustomer" />
+            <End Role="FoodOrder" EntitySet="FoodOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodOrderAppBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FoodCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JMBG" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FoodOrders" Relationship="Self.FK__FoodOrder__Custo__18EBB532" FromRole="FoodCustomer" ToRole="FoodOrder" />
+        </EntityType>
+        <EntityType Name="FoodMenu">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="StatusOfOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FoodCustomer" Relationship="Self.FK__FoodOrder__Custo__18EBB532" FromRole="FoodOrder" ToRole="FoodCustomer" />
+        </EntityType>
+        <Association Name="FK__FoodOrder__Custo__18EBB532">
+          <End Role="FoodCustomer" Type="Self.FoodCustomer" Multiplicity="1" />
+          <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="FoodOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodOrderAppBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FoodCustomers" EntityType="Self.FoodCustomer" />
+          <EntitySet Name="FoodMenus" EntityType="Self.FoodMenu" />
+          <EntitySet Name="FoodOrders" EntityType="Self.FoodOrder" />
+          <AssociationSet Name="FK__FoodOrder__Custo__18EBB532" Association="Self.FK__FoodOrder__Custo__18EBB532">
+            <End Role="FoodCustomer" EntitySet="FoodCustomers" />
+            <End Role="FoodOrder" EntitySet="FoodOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodOrderAppBaseModelStoreContainer" CdmEntityContainer="FoodOrderAppBaseEntities">
+          <EntitySetMapping Name="FoodCustomers">
+            <EntityTypeMapping TypeName="FoodOrderAppBaseModel.FoodCustomer">
+              <MappingFragment StoreEntitySet="FoodCustomer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodMenus">
+            <EntityTypeMapping TypeName="FoodOrderAppBaseModel.FoodMenu">
+              <MappingFragment StoreEntitySet="FoodMenu">
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="MenuItemName" ColumnName="MenuItemName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodOrders">
+            <EntityTypeMapping TypeName="FoodOrderAppBaseModel.FoodOrder">
+              <MappingFragment StoreEntitySet="FoodOrder">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StatusOfOrder" ColumnName="StatusOfOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
