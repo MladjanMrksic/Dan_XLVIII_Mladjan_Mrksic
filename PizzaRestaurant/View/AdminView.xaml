@@ -28,7 +28,7 @@
                       FontWeight="Bold">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}"/>
-                            <DataGridTextColumn Header="Customer JMBG" Binding="{Binding FoodOrder.FoodCustomer.JMBG}"/>
+                            <DataGridTextColumn Header="Customer JMBG" Binding="{Binding CustomerJMBG}"/>
                             <DataGridTextColumn Header="Total Price" Binding="{Binding Price}"/>
                             <DataGridTextColumn Header="Current Status" Binding="{Binding StatusOfOrder}"/>
                             <DataGridTemplateColumn Header="Change Status">

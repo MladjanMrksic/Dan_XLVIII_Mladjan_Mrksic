@@ -15,10 +15,8 @@ namespace PizzaRestaurant
     public partial class FoodOrder
     {
         public int OrderID { get; set; }
-        public int CustomerID { get; set; }
+        public string CustomerJMBG { get; set; }
         public decimal Price { get; set; }
         public string StatusOfOrder { get; set; }
-    
-        public virtual FoodCustomer FoodCustomer { get; set; }
     }
 }

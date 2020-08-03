@@ -15,14 +15,15 @@ namespace PizzaRestaurant.ViewModel
     {
         CustomerView view;
         MenuItemModel mim = new MenuItemModel();
-        FoodCustomer fc;
+        string jmbg;
+        
         FoodOrderModel fom = new FoodOrderModel();
-        public CustomerViewModel(CustomerView newView, FoodCustomer currentFoodCustmer)
-        {
-            fc = currentFoodCustmer;
+        public CustomerViewModel(CustomerView newView, string JMBG)
+        {            
             view = newView;
             menuItems = mim.GetAllMenuItems();
             TotalPrice = 0;
+            jmbg = JMBG;
         }
 
         private List<FoodMenu> menuItems;
@@ -135,8 +136,7 @@ namespace PizzaRestaurant.ViewModel
         private void CheckoutExecute()
         {
             FoodOrder order = new FoodOrder();
-            order.FoodCustomer = fc;
-            order.CustomerID = fc.CustomerID;
+            order.CustomerJMBG = jmbg;
             order.Price = TotalPrice;
             order.StatusOfOrder = "PROCESSING";
             fom.AddFoodOrder(order);

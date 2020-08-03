@@ -13,10 +13,10 @@ namespace PizzaRestaurant
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FoodOrderAppBaseEntities : DbContext
+    public partial class FoodOrderAppBaseEntities1 : DbContext
     {
-        public FoodOrderAppBaseEntities()
-            : base("name=FoodOrderAppBaseEntities")
+        public FoodOrderAppBaseEntities1()
+            : base("name=FoodOrderAppBaseEntities1")
         {
         }
     
@@ -25,7 +25,6 @@ namespace PizzaRestaurant
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<FoodCustomer> FoodCustomers { get; set; }
         public virtual DbSet<FoodMenu> FoodMenus { get; set; }
         public virtual DbSet<FoodOrder> FoodOrders { get; set; }
     }

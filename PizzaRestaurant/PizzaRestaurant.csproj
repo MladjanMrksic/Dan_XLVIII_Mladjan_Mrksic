@@ -82,18 +82,29 @@
     </Compile>
     <Compile Include="AutoClosingMessageBox.cs" />
     <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="FoodCustomer.cs">
-      <DependentUpon>PizzaPlaceDatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="FoodMenu.cs">
       <DependentUpon>PizzaPlaceDatabaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FoodOrder.cs">
       <DependentUpon>PizzaPlaceDatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\FoodCustomerModel.cs" />
     <Compile Include="Model\FoodOrderModel.cs" />
     <Compile Include="Model\MenuItemModel.cs" />
+    <Compile Include="PizzaPlaceDatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaPlaceDatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaPlaceDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaPlaceDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PizzaPlaceDatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaPlaceDatabaseModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Validation\LoginValidation.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
@@ -111,21 +122,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PizzaPlaceDatabaseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaPlaceDatabaseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PizzaPlaceDatabaseModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaPlaceDatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PizzaPlaceDatabaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PizzaPlaceDatabaseModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -143,11 +139,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <EntityDeploy Include="PizzaPlaceDatabaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PizzaPlaceDatabaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
     <None Include="PizzaPlaceDatabaseModel.edmx.diagram">
       <DependentUpon>PizzaPlaceDatabaseModel.edmx</DependentUpon>
     </None>
@@ -160,10 +156,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="PizzaPlaceDatabaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PizzaPlaceDatabaseModel.Context.cs</LastGenOutput>
       <DependentUpon>PizzaPlaceDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>PizzaPlaceDatabaseModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="PizzaPlaceDatabaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -171,9 +170,5 @@
       <LastGenOutput>PizzaPlaceDatabaseModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

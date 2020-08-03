@@ -20,10 +20,10 @@ namespace PizzaRestaurant.View
     /// </summary>
     public partial class CustomerView : Window
     {
-        public CustomerView(FoodCustomer fc)
+        public CustomerView(string JMBG)
         {
             InitializeComponent();
-            DataContext = new CustomerViewModel(this, fc);
+            DataContext = new CustomerViewModel(this,JMBG);
         }
     }
 }
