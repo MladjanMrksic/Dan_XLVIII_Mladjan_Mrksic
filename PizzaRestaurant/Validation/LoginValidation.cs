@@ -28,13 +28,7 @@ namespace PizzaRestaurant.Validation
                 {                    
                     fo = (from o in context.FoodOrders where o.CustomerJMBG == username select o).FirstOrDefault();
                 }
-                if (fo == null)
-                {
-                    CustomerView cv = new CustomerView(username);
-                    main.Close();
-                    cv.Show();
-                }
-                else if (fo.StatusOfOrder == "READY")
+                if (fo.StatusOfOrder == "READY")
                 {
                     AutoClosingMessageBox.Show("You order is ready!\nEnjoy your meal.", "Bon Appétit", 2000);
                     CustomerView cv = new CustomerView(username);
@@ -48,6 +42,12 @@ namespace PizzaRestaurant.Validation
                 else if (fo.StatusOfOrder == "REJECTED")
                 {
                     AutoClosingMessageBox.Show("You order is rejected.\nPlease try again.", "Rejected", 2000);
+                    CustomerView cv = new CustomerView(username);
+                    main.Close();
+                    cv.Show();
+                }
+                else if (fo == null)
+                {
                     CustomerView cv = new CustomerView(username);
                     main.Close();
                     cv.Show();
