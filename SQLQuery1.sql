@@ -18,6 +18,7 @@ create table FoodOrder
 (
 OrderID int primary key identity(1,1) not null,
 CustomerJMBG nvarchar(13) Check (LEN(CustomerJMBG) = 13 and ISNUMERIC(CustomerJMBG) = 1) not null,
+DateOfOrder datetime,
 Price decimal (6,2) not null,
 StatusOfOrder nvarchar(50) Check (UPPER(StatusOfOrder) = 'PROCESSING' or UPPER(StatusOfOrder) = 'READY' or UPPER(StatusOfOrder) = 'REJECTED') not null
 )

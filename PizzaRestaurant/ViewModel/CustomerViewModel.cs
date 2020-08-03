@@ -1,6 +1,7 @@
 ﻿using PizzaRestaurant.Command;
 using PizzaRestaurant.Model;
 using PizzaRestaurant.View;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -138,6 +139,7 @@ namespace PizzaRestaurant.ViewModel
         {
             FoodOrder order = new FoodOrder();
             order.CustomerJMBG = jmbg;
+            order.DateOfOrder = DateTime.Now;
             order.Price = TotalPrice;
             order.StatusOfOrder = "PROCESSING";
             fom.AddFoodOrder(order);

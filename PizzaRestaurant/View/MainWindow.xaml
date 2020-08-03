@@ -9,7 +9,7 @@
     <Grid>
         <Border Background="CadetBlue" CornerRadius="50" Margin="20">
             <StackPanel Margin="15">
-                <Label Content="Warehouse Application" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                <Label Content="Pizza Application" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
                 <Separator></Separator>
                 <Label Content="Username" Foreground="White" Margin="0 -5"/>
                 <TextBox Name="usernameBox" Text="{Binding UserName, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" Background="#545d6a" Foreground="White" FontSize="12" Margin="0 10"/>

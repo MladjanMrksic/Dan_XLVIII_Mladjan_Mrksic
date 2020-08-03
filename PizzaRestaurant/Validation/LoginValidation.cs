@@ -30,7 +30,7 @@ namespace PizzaRestaurant.Validation
             else if (orderList.Contains((from o in orderList where o.CustomerJMBG == username select o).FirstOrDefault()) && password == "Guest")
             {               
                 FoodOrder fo;
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {                    
                     fo = (from o in context.FoodOrders where o.CustomerJMBG == username select o).FirstOrDefault();
                 }
@@ -62,6 +62,12 @@ namespace PizzaRestaurant.Validation
                     main.Close();
                     cv.Show();
                 }
+            }
+            else if (!orderList.Contains((from o in orderList where o.CustomerJMBG == username select o).FirstOrDefault()) && password == "Guest")
+            {
+                CustomerView cv = new CustomerView(username);
+                main.Close();
+                cv.Show();
             }
             //Wrong credentials
             else

@@ -13,10 +13,10 @@ namespace PizzaRestaurant
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FoodOrderAppBaseEntities1 : DbContext
+    public partial class FoodOrderAppBaseEntities : DbContext
     {
-        public FoodOrderAppBaseEntities1()
-            : base("name=FoodOrderAppBaseEntities1")
+        public FoodOrderAppBaseEntities()
+            : base("name=FoodOrderAppBaseEntities")
         {
         }
     

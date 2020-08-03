@@ -29,6 +29,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Order ID" Binding="{Binding OrderID}"/>
                             <DataGridTextColumn Header="Customer JMBG" Binding="{Binding CustomerJMBG}"/>
+                            <DataGridTextColumn Header="Date of Order" Binding="{Binding DateOfOrder}"/>
                             <DataGridTextColumn Header="Total Price" Binding="{Binding Price}"/>
                             <DataGridTextColumn Header="Current Status" Binding="{Binding StatusOfOrder}"/>
                             <DataGridTemplateColumn Header="Change Status">

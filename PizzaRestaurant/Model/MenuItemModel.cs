@@ -15,7 +15,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     List<FoodMenu> menu = new List<FoodMenu>();
                     menu = (from m in context.FoodMenus select m).ToList();

@@ -19,6 +19,7 @@
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerJMBG" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="DateOfOrder" Type="datetime" />
           <Property Name="Price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="StatusOfOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -45,10 +46,11 @@
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerJMBG" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfOrder" Type="DateTime" Precision="3" />
           <Property Name="Price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="StatusOfOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="FoodOrderAppBaseEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FoodOrderAppBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FoodMenus" EntityType="Self.FoodMenu" />
           <EntitySet Name="FoodOrders" EntityType="Self.FoodOrder" />
         </EntityContainer>
@@ -57,7 +59,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FoodOrderAppBaseModelStoreContainer" CdmEntityContainer="FoodOrderAppBaseEntities1">
+        <EntityContainerMapping StorageEntityContainer="FoodOrderAppBaseModelStoreContainer" CdmEntityContainer="FoodOrderAppBaseEntities">
           <EntitySetMapping Name="FoodMenus">
             <EntityTypeMapping TypeName="FoodOrderAppBaseModel.FoodMenu">
               <MappingFragment StoreEntitySet="FoodMenu">
@@ -72,6 +74,7 @@
               <MappingFragment StoreEntitySet="FoodOrder">
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="CustomerJMBG" ColumnName="CustomerJMBG" />
+                <ScalarProperty Name="DateOfOrder" ColumnName="DateOfOrder" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="StatusOfOrder" ColumnName="StatusOfOrder" />
               </MappingFragment>

@@ -16,6 +16,7 @@ namespace PizzaRestaurant
     {
         public int OrderID { get; set; }
         public string CustomerJMBG { get; set; }
+        public Nullable<System.DateTime> DateOfOrder { get; set; }
         public decimal Price { get; set; }
         public string StatusOfOrder { get; set; }
     }

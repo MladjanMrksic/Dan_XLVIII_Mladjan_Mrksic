@@ -15,7 +15,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     List<FoodOrder> orders = new List<FoodOrder>();
                     orders = (from o in context.FoodOrders select o).ToList();
@@ -37,7 +37,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     FoodOrder fo = new FoodOrder();
                     fo = (from o in context.FoodOrders where o.CustomerJMBG == jmbg select o).FirstOrDefault();
@@ -58,7 +58,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     FoodOrder order = (from o in context.FoodOrders where o.OrderID == orderID select o).FirstOrDefault();
                     context.FoodOrders.Remove(order);
@@ -78,7 +78,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     context.FoodOrders.Add(order);
                     context.SaveChanges();
@@ -86,7 +86,7 @@ namespace PizzaRestaurant.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception " + ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("FOM Exception " + ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace PizzaRestaurant.Model
         {
             try
             {
-                using (FoodOrderAppBaseEntities1 context = new FoodOrderAppBaseEntities1())
+                using (FoodOrderAppBaseEntities context = new FoodOrderAppBaseEntities())
                 {
                     FoodOrder order = (from o in context.FoodOrders where o.OrderID == updatedOrder.OrderID select o).FirstOrDefault();
                     order.StatusOfOrder = updatedOrder.StatusOfOrder;
