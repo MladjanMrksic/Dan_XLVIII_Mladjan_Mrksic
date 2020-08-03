@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PizzaRestaurant
 {
+    /// <summary>
+    /// Class used for auto closing MessageBoxes
+    /// </summary>
     class AutoClosingMessageBox
     {
         System.Threading.Timer _timeoutTimer;

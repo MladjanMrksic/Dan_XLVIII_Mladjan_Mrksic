@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PizzaRestaurant.Model
 {
     class MenuItemModel
     {
+        /// <summary>
+        /// Gets all FoodMenu objects
+        /// </summary>
+        /// <returns>A list of all FoodMenu objects</returns>
         public List<FoodMenu> GetAllMenuItems()
         {
             try

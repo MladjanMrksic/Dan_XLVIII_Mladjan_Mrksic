@@ -1,11 +1,7 @@
 ﻿using PizzaRestaurant.Command;
 using PizzaRestaurant.Model;
 using PizzaRestaurant.View;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,17 +11,20 @@ namespace PizzaRestaurant.ViewModel
     {
         CustomerView view;
         MenuItemModel mim = new MenuItemModel();
-        string jmbg;
-        
+        string jmbg;        
         FoodOrderModel fom = new FoodOrderModel();
+
+        #region Constructor
         public CustomerViewModel(CustomerView newView, string JMBG)
-        {            
+        {
             view = newView;
             menuItems = mim.GetAllMenuItems();
             TotalPrice = 0;
             jmbg = JMBG;
         }
+        #endregion
 
+        #region Properties
         private List<FoodMenu> menuItems;
         public List<FoodMenu> MenuItems
         {
@@ -67,7 +66,9 @@ namespace PizzaRestaurant.ViewModel
                 OnPropertyChanged("TotalPrice");
             }
         }
+        #endregion
 
+        #region Commands
         private ICommand add;
         public ICommand Add
         {
@@ -156,5 +157,6 @@ namespace PizzaRestaurant.ViewModel
                 return true;
             }
         }
+        #endregion
     }
 }

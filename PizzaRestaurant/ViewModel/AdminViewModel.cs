@@ -1,11 +1,7 @@
 ﻿using PizzaRestaurant.Command;
 using PizzaRestaurant.Model;
 using PizzaRestaurant.View;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PizzaRestaurant.ViewModel
@@ -15,14 +11,16 @@ namespace PizzaRestaurant.ViewModel
         public AdminView view;
         FoodOrderModel fom = new FoodOrderModel();
 
+        #region Constructor
         public AdminViewModel(AdminView av)
         {
             view = av;
             foodOrders = fom.GetAllFoodOrders();
 
         }
-        public List<string> Statuses { get; } = new List<string> { "PROCESSING", "READY", "REJECTED" };
+        #endregion
 
+        #region Properties
         public string SelectedStatus
         {
             get { return FOrder.StatusOfOrder; }
@@ -32,8 +30,6 @@ namespace PizzaRestaurant.ViewModel
                 OnPropertyChanged("SelectedStatus");
             }
         }
-
-
 
         private List<FoodOrder> foodOrders;
         public List<FoodOrder> FoodOrders
@@ -62,7 +58,9 @@ namespace PizzaRestaurant.ViewModel
                 OnPropertyChanged("FOrder");
             }
         }
+        #endregion
 
+        #region Commands
         private ICommand deleteFoodOrder;
         public ICommand DeleteFoodOrder
         {
@@ -79,7 +77,7 @@ namespace PizzaRestaurant.ViewModel
         {
             fom.DeleteFoodOrder(FOrder.OrderID);
             foodOrders = fom.GetAllFoodOrders();
-            
+
         }
         private bool CanDeleteEmployeeExecute()
         {
@@ -139,5 +137,6 @@ namespace PizzaRestaurant.ViewModel
         {
             return true;
         }
+        #endregion
     }
 }

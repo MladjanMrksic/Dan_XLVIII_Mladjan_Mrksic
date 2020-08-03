@@ -1,10 +1,6 @@
 ﻿using PizzaRestaurant.Command;
 using PizzaRestaurant.Validation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PizzaRestaurant.ViewModel
@@ -14,10 +10,13 @@ namespace PizzaRestaurant.ViewModel
         MainWindow main;
         LoginValidation lv = new LoginValidation();
 
+        #region Constructor
         public MainWindowViewModel(MainWindow login)
         {
             main = login;
         }
+        #endregion
+        #region Commands
         private ICommand submit;
         public ICommand Submit
         {
@@ -45,6 +44,7 @@ namespace PizzaRestaurant.ViewModel
                 return true;
             }
         }
+        #endregion
 
     }
 }

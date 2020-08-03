@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PizzaRestaurant.Model
 {
     class FoodOrderModel
     {
+        /// <summary>
+        /// This method gets all FoodOrders from Database
+        /// </summary>
+        /// <returns>A list of all FoodOrders</returns>
         public List<FoodOrder> GetAllFoodOrders()
         {
             try
@@ -26,7 +28,11 @@ namespace PizzaRestaurant.Model
                 return null;
             }
         }
-
+        /// <summary>
+        /// Gets a specific FoodOrder
+        /// </summary>
+        /// <param name="jmbg">jmbg is a search parameter by which FoodOrders are searched</param>
+        /// <returns>Returns a single instance of FoodOrder</returns>
         public FoodOrder GetFoodOrder(string jmbg)
         {
             try
@@ -44,7 +50,10 @@ namespace PizzaRestaurant.Model
                 return null;
             }
         }
-
+        /// <summary>
+        /// Deletes a food order with matching parameter
+        /// </summary>
+        /// <param name="orderID">Deletes FoodOrder with given ID</param>
         public void DeleteFoodOrder(int orderID)
         {
             try
@@ -61,7 +70,10 @@ namespace PizzaRestaurant.Model
                 MessageBox.Show("Exception " + ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// Adds new instance of FoodOrder class
+        /// </summary>
+        /// <param name="order">FoodOrder class being added</param>
         public void AddFoodOrder(FoodOrder order)
         {
             try
@@ -77,7 +89,10 @@ namespace PizzaRestaurant.Model
                 MessageBox.Show("Exception " + ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// Updated FoodOrder class object
+        /// </summary>
+        /// <param name="updatedOrder">New FoodOrder with changes already made</param>
         public void UpdateFoodOrder(FoodOrder updatedOrder)
         {
             try
