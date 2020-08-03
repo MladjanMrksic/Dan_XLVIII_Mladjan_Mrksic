@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PizzaRestaurant.View"
         mc:Ignorable="d"
-        Title="CustomerView" Height="450" Width="800">
+        Title="Order Window" Height="450" Width="800" FontSize="14" Background="DarkSlateGray" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Border Background="CadetBlue" CornerRadius="50" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Grid.Row="3" Height="auto" Width="auto">
+                    <DataGrid Name="DataGridFoodOrder" ItemsSource="{Binding MenuItems, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding MenuItem, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HeadersVisibility="Column"
+                      AutoGenerateColumns="False" HorizontalGridLinesBrush="Black" BorderBrush="Black" Foreground="Black"
+                      FontWeight="Bold">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Menu Item ID" Binding="{Binding MenuItemID}"/>
+                            <DataGridTextColumn Header="Menu Item Name" Binding="{Binding MenuItemName}"/>
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                            <DataGridTemplateColumn Header="Add">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnAdd"
+                                        Command="{Binding DataContext.Add, RelativeSource={RelativeSource FindAncestor,
+                                    AncestorType={x:Type Window}},UpdateSourceTrigger=PropertyChanged}" Content="Add"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="btnLogOut" Content="Logout" Width="Auto" Height="20" HorizontalAlignment="Left" Margin="0,0,20,0"
+                Command="{Binding Logout, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold"/>
+                    <Label x:Name="TotalPricelbl" Content="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0.4" Width="147"/>
+                    <Button x:Name="btnCheckout" Content="Check Out" Width="Auto" Height="20" FontWeight="Bold" Margin="0,0,0,0.8" 
+                        Command="{Binding Checkout, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

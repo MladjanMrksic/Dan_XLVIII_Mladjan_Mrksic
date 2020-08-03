@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaRestaurant.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace PizzaRestaurant.View
     /// </summary>
     public partial class CustomerView : Window
     {
-        public CustomerView()
+        public CustomerView(FoodCustomer fc)
         {
             InitializeComponent();
+            DataContext = new CustomerViewModel(this, fc);
         }
     }
 }
